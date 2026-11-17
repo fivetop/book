@@ -1,0 +1,51 @@
+{
+  "vendor": "가평 레일바이크 예약 창구 (책 실습용 가상 업체)",
+  "info": {
+    "날짜": "6월 둘째 주 금요일 예약을 받습니다",
+    "소요 시간": "1시간 (안내 10분 + 탑승 50분)",
+    "차량": "4인승. 시간마다 남은 대수가 다릅니다",
+    "위치": "유원지 앞 식당에서 걸어서 10분, 리조트까지 차로 15분",
+    "요금": "1대 4만 원. 단체 할인은 전화로만 안내합니다"
+  },
+  "times": [
+    { "time": "10:00", "left": 6 },
+    { "time": "11:00", "left": 2 },
+    { "time": "13:00", "left": 0 },
+    { "time": "14:00", "left": 5 },
+    { "time": "15:30", "left": 5 },
+    { "time": "17:00", "left": 3 }
+  ],
+  "text": {
+    "timesHeader": "6월 둘째 주 금요일 출발 시간과 남은 차량 (4인승)",
+    "timeLine": "{0}  남은 차량 {1}대",
+    "badCarts": "예약할 차량 대수(1 이상의 숫자)를 알려 주세요.",
+    "noSuchTime": "{0}에는 출발하는 차가 없습니다. 출발 시간 목록을 먼저 확인해 주세요.",
+    "notEnough": "{0} 출발은 남은 차량이 {1}대뿐이라 예약할 수 없습니다.",
+    "reserved": "가예약을 접수했습니다: {0} 출발, {1}대. 확정은 하루 전까지 전화로 해 주세요."
+  },
+  "tools": [
+    {
+      "name": "get_vendor_info",
+      "description": "가평 레일바이크 업체 안내: 소요 시간, 차량, 위치, 요금.",
+      "inputSchema": { "type": "object", "properties": {} }
+    },
+    {
+      "name": "check_times",
+      "description": "6월 둘째 주 금요일 레일바이크 출발 시간과 시간별 남은 차량(4인승) 대수를 조회한다.",
+      "inputSchema": { "type": "object", "properties": {} }
+    },
+    {
+      "name": "reserve",
+      "description": "레일바이크를 가예약한다. 업체에 실제로 예약이 접수된다.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "time":  { "type": "string",  "description": "출발 시간 (예: 14:00)" },
+          "carts": { "type": "integer", "description": "예약할 4인승 차량 대수" },
+          "name":  { "type": "string",  "description": "예약자 이름 또는 팀 이름" }
+        },
+        "required": ["time", "carts"]
+      }
+    }
+  ]
+}
